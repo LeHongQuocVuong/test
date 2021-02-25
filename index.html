@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+
+    <!-- Liên kết CSS Bootstrap -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <!-- CSS OwlCarousel -->
+    <link rel="stylesheet" href="assets/vendor/OwlCarousel/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/vendor/OwlCarousel/css/owl.theme.default.min.css" type="text/css">
+    <!-- Custom css - Các file css do chúng ta tự viết -->
+    <link rel="stylesheet" href="assets/css/app.css" type="text/css">
+
+    
+</head>
+
+<body>
+    <!-- Vuejs -->
+    <div id="app">
+
+        <!-- Menu search -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 0px;">
+            <div class="container">
+
+                <a class="navbar-brand" href="index.html" style="color:#d4af37; font-weight: bold; font-size: 30px;">
+                    <img src="assets/img/logo/logo1.png" alt="" style="width: 50px; height: 50px;">
+
+                    KING</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent_1" aria-controls="navbarSupportedContent_1"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent_1">
+
+
+                    <form class="mx-auto" style="flex-basis: 500px;">
+                        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" aria-label="Search"
+                                aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item pl-2">
+                            <a class="btn btn-outline-secondary" href="GioHang.html" role="button">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                Giỏ hàng
+                            </a>
+                        </li>
+                        <li class="nav-item pl-2">
+                            <a class="btn btn-outline-secondary" href="DangNhap.html" role="button">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                Đăng nhập
+                            </a>
+                        </li>
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- Menu  -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning" style="padding: 0px;">
+            <div class="container">
+                <a class="navbar-brand nav-a" href="index.html" title="Trang chủ">
+                    <b>
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        Trang chủ
+                    </b>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                    <a class="nav-a" href="dienthoai.html" title="Điện thoại di động, smartphone">
+                        <i class="fa fa-mobile fa-a" aria-hidden="true"></i>
+                        <b>Điện thoại</b>
+                    </a>
+                    <a class="nav-a" href="laptop.html" title="Máy tính xách tay">
+                        <i class="fa fa-laptop" aria-hidden="true"></i>
+                        <b>Laptop</b>
+                    </a>
+                    <a class="nav-a" href="tablet.html" title="Máy tính bảng">
+                        <i class="fa fa-tablet" aria-hidden="true"></i>
+                        <b>Tablet</b>
+                    </a>
+                    <a class="nav-a" href="phukien.html" title="Phụ kiện điện thoại, laptop, Tablet">
+                        <i class="fa fa-headphones" aria-hidden="true"></i>
+                        <b>Phụ kiện</b>
+                    </a>
+                    <a class="nav-a" href="dongho.html" title="smartwatch">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-smartwatch" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 5h.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H14V5z" />
+                            <path fill-rule="evenodd"
+                                d="M8.5 4.5A.5.5 0 0 1 9 5v3.5a.5.5 0 0 1-.5.5H6a.5.5 0 0 1 0-1h2V5a.5.5 0 0 1 .5-.5z" />
+                            <path fill-rule="evenodd"
+                                d="M4.5 2h7A2.5 2.5 0 0 1 14 4.5v7a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 11.5v-7A2.5 2.5 0 0 1 4.5 2zm0 1A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3h-7z" />
+                            <path
+                                d="M4 2.05v-.383C4 .747 4.746 0 5.667 0h4.666C11.253 0 12 .746 12 1.667v.383a2.512 2.512 0 0 0-.5-.05h-7c-.171 0-.338.017-.5.05zm0 11.9c.162.033.329.05.5.05h7c.171 0 .338-.017.5-.05v.383c0 .92-.746 1.667-1.667 1.667H5.667C4.747 16 4 15.254 4 14.333v-.383z" />
+                        </svg>
+                        <b>Đồng hồ thông minh</b>
+                    </a>
+                    <a class="nav-a" href="gioithieu.html" title="">
+
+                        <b>Giới thiệu</b>
+                    </a>
+                    <a class="nav-a" href="lienhe.html" title="">
+
+                        <b>Liên hệ</b>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Slider -->
+        <div class="container my-2">
+            <div class="row">
+                <div class="col-md-8" style="padding: unset;">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="assets/img/slider/banner1.png" class="d-block img-fluid slider" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/img/slider/banner2.png" class="d-block  img-fluid slider" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/img/slider/banner3.png" class="d-block  img-fluid slider" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/img/slider/banner4.png" class="d-block  img-fluid slider" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/img/slider/banner5.png" class="d-block  img-fluid slider" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="assets/img/slider/banner6.png" class="d-block  img-fluid  slider" alt="...">
+                            </div>
+
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 homenew" style="background-color: white;">
+                    <div class="row">
+                        <div class="col-md-12 border-bottom mb-3">
+                            <h2>
+                                <a href="#">Tin công nghệ</a>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <img src="assets/img/slider/qc1.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img src="assets/img/slider/qc2.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- carousel -->
+
+        <div class="container" style="background-color: white;">
+            <div class="row NoiBat-Title">
+                <div class="pt-2">
+                    <h5>KHUYẾN MÃI HOT NHẤT</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="slider">
+                        <div class="owl-carousel owl-theme">
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/huawei-mediapad-m5-lite-gray-400x400.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Samsung Galaxy Tab S7</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>23.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/iphone-11-pro-max-green-400x400.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Iphone 11 pro max green</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>23.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/iphone-se-256gb-2020-261920-101916-200x200.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Iphone se 256gb</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>23.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/samsung-galaxy-a71-195420-105424-400x400.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Samsung galaxy a71</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>23.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/huawei-mediapad-m5-lite-gray-400x400.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Samsung Galaxy Tab S7</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>23.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/iphone-11-pro-max-green-400x400.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Iphone 11 pro max green</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>23.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/iphone-se-256gb-2020-261920-101916-200x200.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Iphone se 256gb</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>23.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/samsung-galaxy-a71-195420-105424-400x400.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Samsung galaxy a71</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>23.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/huawei-mediapad-m5-lite-gray-400x400.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Samsung Galaxy Tab S7</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>23.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/iphone-11-pro-max-green-400x400.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Iphone 11 pro max green</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>23.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/iphone-se-256gb-2020-261920-101916-200x200.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Iphone se 256gb</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>23.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/samsung-galaxy-a71-195420-105424-400x400.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Samsung galaxy a71</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>23.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/huawei-mediapad-m5-lite-gray-400x400.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Samsung Galaxy Tab S7</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>23.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/iphone-11-pro-max-green-400x400.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Iphone 11 pro max green</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>23.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/iphone-se-256gb-2020-261920-101916-200x200.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Iphone se 256gb</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>23.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/samsung-galaxy-a71-195420-105424-400x400.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Samsung galaxy a71</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>23.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Điện thoại nổi bật -->
+        <div class="container NoiBat">
+
+            <div class="row NoiBat-Title">
+                <div class="col-md-4 pt-2">
+                    <h5>ĐIỆN THOẠI NỖI BẬT NHẤT</h5>
+                </div>
+                <div class="col-md-8 d-none d-md-block">
+                    <div class="row">
+                        <div class="col-md-2 NoiBat-a">
+                            <a href="DienThoai.html">Samsung Galaxy Mới</a>
+
+                        </div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Iphone Pro Max</a>
+                        </div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Iphone 11</a></div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Redmi Note</a></div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Oppo Reno 4</a></div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Xem tất cả</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 pl-0 a-product">
+                    <a href="iphone-11-pro-max-green.html">
+                        <img src="assets/img/product/1_dt_NoiBat.jpg" alt="" style="width: 555px;" class="img-fluid">
+                        <div style="text-align: left; padding-left: 10px;">
+                            <h6>Iphone 11 pro max green</h6>
+                            <small>
+                                <div class="row">
+
+                                    <div class="col-md-2"><strong style="color: red; ">18.990.000₫</strong>
+                                    </div>
+                                    <div class="col-md-2"><del>23.000.000</del></div>
+                                </div>
+                            </small>
+                            <label class="Tragop"
+                                style="display: inline-block; position: absolute; left: auto; top: auto; right: 10px; bottom: 35px;">Trả
+                                góp 0%</label>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-2 a-product">
+                    <a href="iphone-11-pro-max-green.html">
+                        <img src="assets/img/product/iphone-11-pro-max-green-400x400.jpg" alt=""
+                            style="width: 180px; height: 180px;" class="img-fluid">
+                        <h6>Iphone 11 pro max green</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                    </a>
+                </div>
+                <div class="col-md-2 a-product">
+                    <a href="iphone-11-pro-max-green.html">
+                        <img src="assets/img/product/iphone-se-256gb-2020-261920-101916-200x200.jpg" alt=""
+                            style="width: 180px; height: 180px;" class="img-fluid">
+                        <h6>Iphone SE 256 GB</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                    </a>
+                </div>
+                <div class="col-md-2 a-product">
+                    <a href="iphone-11-pro-max-green.html">
+                        <img src="assets/img/product/iphone-xs-gold-600x600-2-600x600.jpg" alt=""
+                            style="width: 180px; height: 180px;" class="img-fluid">
+                        <h6>Iphone XS Gold</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                    </a>
+                </div>
+
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 pl-0 a-product">
+                    <a href="iphone-11-pro-max-green.html">
+                        <img src="assets/img/product/1_dt_NoiBat2.jpg" alt="" style="width: 555px;" class="img-fluid">
+                        <div style="text-align: left; padding-left: 10px;">
+                            <h6>Oppo Reno 4</h6>
+                            <small>
+                                <div class="row">
+
+                                    <div class="col-md-2"><strong style="color: red; ">18.990.000₫</strong>
+                                    </div>
+                                    <div class="col-md-2"><del>23.000.000</del></div>
+                                </div>
+                            </small>
+                            <label class="Tragop"
+                                style="display: inline-block; position: absolute; left: auto; top: auto; right: 10px; bottom: 35px;">Trả
+                                góp 0%</label>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-2 a-product">
+                    <a href="iphone-11-pro-max-green.html">
+                        <img src="assets/img/product/samsung-galaxy-a71-195420-105424-400x400.jpg" alt=""
+                            style="width: 180px; height: 180px;" class="img-fluid">
+                        <h6>Samsung Galaxy A71</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                    </a>
+                </div>
+                <div class="col-md-2 a-product">
+                    <a href="iphone-11-pro-max-green.html">
+                        <img src="assets/img/product/samsung-galaxy-note-20-062220-122200-400x400.jpg" alt=""
+                            style="width: 180px; height: 180px;" class="img-fluid">
+                        <h6>Samsung Galaxy Note 20</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                    </a>
+                </div>
+                <div class="col-md-2 a-product">
+                    <a href="iphone-11-pro-max-green.html">
+                        <img src="assets/img/product/vsmart-joy-3-4gb-den-400x460-400x460.png" alt=""
+                            style="width: 180px; height: 180px;" class="img-fluid">
+                        <h6>Vsmart Joy 3 4Gb</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                    </a>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Laptop nổi bật -->
+        <div class="container NoiBat">
+
+            <div class="row NoiBat-Title">
+                <div class="col-md-4 pt-2">
+                    <h5>LAPTOP NỖI BẬT NHẤT</h5>
+                </div>
+                <div class="col-md-8 d-none d-md-block">
+                    <div class="row">
+                        <div class="col-md-2 pt-2 NoiBat-a">
+                            <a href="DienThoai.html">Laptop Asus</a>
+
+                        </div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Laptop HP</a>
+                        </div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Macbool Pro</a></div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Laptop Dell</a></div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Laptop Acer</a></div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Xem tất cả</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 pl-0 a-product">
+                    <a href="hp-348-g7-i5.html">
+                        <img src="assets/img/product/2_lt_NoiBat.jpg" alt="" style="width: 555px;" class="img-fluid">
+                        <div style="text-align: left; padding-left: 10px;">
+                            <h6>Acer Aspire 3 A315 34 P26U N5030 (NX.HE3SV.00H)</h6>
+                            <small>
+                                <div class="row">
+
+                                    <div class="col-md-2"><strong style="color: red; ">18.990.000₫</strong>
+                                    </div>
+                                    <div class="col-md-2"><del>23.000.000</del></div>
+                                </div>
+                            </small>
+                            <label class="Tragop"
+                                style="display: inline-block; position: absolute; left: auto; top: auto; right: 10px; bottom: 35px;">Trả
+                                góp 0%</label>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-2 a-product">
+                    <a href="hp-348-g7-i5.html">
+                        <img src="assets/img/product/2_lt_hp-348-g7-i5.jpg" alt="" style="width: 180px; height: 180px;"
+                            class="img-fluid">
+                        <h6>HP 348 G7 i5</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                        <img src="assets/img/icon/icon_BH.png" alt="" class="BaoHanh">
+                    </a>
+                </div>
+                <div class="col-md-2 a-product">
+                    <a href="hp-348-g7-i5.html">
+                        <img src="assets/img/product/2_lt_lenovo-ideapad-s145-81w8001xvn-a4-216292-400x400.jpg" alt=""
+                            style="width: 180px; height: 180px;" class="img-fluid">
+                        <h6>Lenovo IdeaPad S145</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                        <img src="assets/img/icon/icon_BH.png" alt="" class="BaoHanh">
+                    </a>
+                </div>
+                <div class="col-md-2 a-product">
+                    <a href="hp-348-g7-i5.html">
+                        <img src="assets/img/product/2_lt_acer-aspire-3-a315.jpg" alt=""
+                            style="width: 180px; height: 180px;" class="img-fluid">
+                        <h6>Acer Aspire A315</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                        <img src="assets/img/icon/icon_BH.png" alt="" class="BaoHanh">
+                    </a>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Tablet nổi bật -->
+        <div class="container NoiBat">
+
+            <div class="row NoiBat-Title">
+                <div class="col-md-4 pt-2">
+                    <h5>TABLET NỖI BẬT NHẤT</h5>
+                </div>
+                <div class="col-md-8 d-none d-md-block">
+                    <div class="row">
+                        <div class="col-md-2 NoiBat-a">
+                            <a href="DienThoai.html">Samsung Galaxy Tab</a>
+
+                        </div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">iPad</a>
+                        </div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Lenovo Tab</a></div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Masstel Tab</a></div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Huawei Tab</a></div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Xem tất cả</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-3 a-product">
+                    <a href="ipad-10-2-inch-wifi-cellular-32gb-2019-gold.html">
+                        <img src="assets/img/product/3_tl_ipad-10-2-inch-wifi-cellular-32gb-2019-gold.jpg" alt=""
+                            style="width: 180px; height: 180px;" class="img-fluid">
+                        <h6>iPad 10.2 inch Wifi Cellular (2019) 32GB</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                        <img src="assets/img/icon/icon_BH.png" alt="" class="BaoHanh" style="left: 210px;">
+                    </a>
+                </div>
+                <div class="col-md-3 a-product">
+                    <a href="ipad-10-2-inch-wifi-cellular-32gb-2019-gold.html">
+                        <img src="assets/img/product/3_tl_masstel-tab10-pro-gold-2.jpg" alt=""
+                            style="width: 180px; height: 180px;" class="img-fluid">
+                        <h6>Masstel Tab 10 Pro</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                        <img src="assets/img/icon/icon_BH.png" alt="" class="BaoHanh" style="left: 210px;">
+                    </a>
+                </div>
+                <div class="col-md-3 a-product">
+                    <a href="ipad-10-2-inch-wifi-cellular-32gb-2019-gold.html">
+                        <img src="assets/img/product/3_tl_samsung-galaxy-tab-a8-plus.jpg" alt=""
+                            style="width: 180px; height: 180px;" class="img-fluid">
+                        <h6>Samsung Galaxy Tab A 8.0 SPen</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                        <img src="assets/img/icon/icon_BH.png" alt="" class="BaoHanh" style="left: 210px;">
+                    </a>
+                </div>
+                <div class="col-md-3 a-product">
+                    <a href="ipad-10-2-inch-wifi-cellular-32gb-2019-gold.html">
+                        <img src="assets/img/product/3_tl_samsung-galaxy-tab-a8-t295-2019-silver.jpg" alt=""
+                            style="width: 180px; height: 180px;" class="img-fluid">
+                        <h6>Samsung Galaxy Tab A8</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                        <img src="assets/img/icon/icon_BH.png" alt="" class="BaoHanh" style="left: 210px;">
+                    </a>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Phụ kiện nổi bật -->
+        <div class="container NoiBat">
+
+            <div class="row NoiBat-Title">
+                <div class="col-md-4 pt-2">
+                    <h5>PHỤ KIỆN NỖI BẬT NHẤT</h5>
+                </div>
+                <div class="col-md-8 d-none d-md-block">
+                    <div class="row">
+                        <div class="col-md-2 pt-2 NoiBat-a">
+                            <a href="DienThoai.html">Pin dự phòng</a>
+
+                        </div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Cáp sạc</a>
+                        </div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Tai nghe</a></div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Loa</a></div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Thẻ nhớ</a></div>
+                        <div class="col-md-2 pt-2 NoiBat-a"><a href="DienThoai.html">Xem tất cả</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-3 a-product">
+                    <a href="iphone-11-pro-max-green.html">
+                        <img src="assets/img/product/4_tn_tai-nghe-chup-tai-corsair-hs50-pro.jpg" alt=""
+                            style="width: 180px; height: 180px;" class="img-fluid">
+                        <h6>Tai nghe chụp tai Corsair hs50 pro</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                        <img src="assets/img/icon/icon_BH.png" alt="" class="BaoHanh" style="left: 210px;">
+                    </a>
+                </div>
+                <div class="col-md-3 a-product">
+                    <a href="iphone-11-pro-max-green.html">
+                        <img src="assets/img/product/4_tn_tai-nghe-chup-tai-gaming-71-rapoo.jpg" alt=""
+                            style="width: 180px; height: 180px;" class="img-fluid">
+                        <h6>Tai nghe chụp tai Gaming 71 Rapoo</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                        <img src="assets/img/icon/icon_BH.png" alt="" class="BaoHanh" style="left: 210px;">
+                    </a>
+                </div>
+                <div class="col-md-3 a-product">
+                    <a href="iphone-11-pro-max-green.html">
+                        <img src="assets/img/product/4_tn_tai-nghe-ep-bluetooth-sony.jpg" alt=""
+                            style="width: 180px; height: 180px;" class="img-fluid">
+                        <h6>Tại nghe ép bluetooth Sony</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                        <img src="assets/img/icon/icon_BH.png" alt="" class="BaoHanh" style="left: 210px;">
+                    </a>
+                </div>
+                <div class="col-md-3 a-product">
+                    <a href="iphone-11-pro-max-green.html">
+                        <img src="assets/img/product/4_tn_tai-nghe-wh-xb700.jpg" alt=""
+                            style="width: 180px; height: 180px;" class="img-fluid">
+                        <h6>Tai nghe Wh Xb700</h6>
+                        <small>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5"><strong style="color: red; ">18.990.000₫</strong>
+                                </div>
+                                <div class="col-md-5"><del>23.000.000</del></div>
+                            </div>
+                        </small>
+                        <label class="Tragop">Trả góp 0%</label>
+                        <img src="assets/img/icon/icon_BH.png" alt="" class="BaoHanh" style="left: 210px;">
+                    </a>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+        <!-- owl-carousel 2 -->
+        <div class="container" style="background-color: white; margin-top: 10px;">
+            <div class="row NoiBat-Title">
+                <div class="pt-2">
+                    <h5>ĐỒNG HỒ THÔNG MINH</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="slider2">
+                        <div class="owl-carousel owl-theme">
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/5_dh_oppo-watch-41mm.jpg" alt="" class="img-carousel"
+                                        style="width: 150px; height: 150;">
+                                    <h6>Oppo Watch 41mm hồng</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">5.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>6.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/5_dh_xiaomi-amazfit.jpg" alt="" class="img-carousel"
+                                        style="width: 150px; height: 150;">
+                                    <h6>Oppo Watch 41mm hồng</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">5.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>6.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/5_dh_suunto-7-day-silicon.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Oppo Watch 41mm hồng</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">5.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>6.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/5_dh_kidcare-08s-ava.jpg" alt="" class="img-carousel"
+                                        style="width: 150px; height: 150;">
+                                    <h6>Oppo Watch 41mm hồng</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">5.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>6.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/5_dh_mi-band-5.jpg" alt="" class="img-carousel"
+                                        style="width: 150px; height: 150;">
+                                    <h6>Oppo Watch 41mm hồng</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">5.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>6.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/5_dh_le-watch-s3-gps-42mm.png" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Oppo Watch 41mm hồng</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">5.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>6.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/5_dh_huawei-watch-gt-thum.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Oppo Watch 41mm hồng</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">5.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>6.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/5_dh_samsung-galaxy-watch-3.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Oppo Watch 41mm hồng</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">5.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>6.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/5_dh_oppo-watch-41mm.jpg" alt="" class="img-carousel"
+                                        style="width: 150px; height: 150;">
+                                    <h6>Oppo Watch 41mm hồng</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">5.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>6.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/5_dh_xiaomi-amazfit.jpg" alt="" class="img-carousel"
+                                        style="width: 150px; height: 150;">
+                                    <h6>Oppo Watch 41mm hồng</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">5.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>6.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/5_dh_suunto-7-day-silicon.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Oppo Watch 41mm hồng</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">5.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>6.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/5_dh_kidcare-08s-ava.jpg" alt="" class="img-carousel"
+                                        style="width: 150px; height: 150;">
+                                    <h6>Oppo Watch 41mm hồng</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">5.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>6.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/5_dh_mi-band-5.jpg" alt="" class="img-carousel"
+                                        style="width: 150px; height: 150;">
+                                    <h6>Oppo Watch 41mm hồng</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">5.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>6.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/5_dh_le-watch-s3-gps-42mm.png" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Oppo Watch 41mm hồng</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">5.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>6.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/5_dh_huawei-watch-gt-thum.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Oppo Watch 41mm hồng</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">5.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>6.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                            <div class="item item-carousel owl-product">
+                                <a href="iphone-11-pro-max-green.html">
+                                    <img src="assets/img/product/5_dh_samsung-galaxy-watch-3.jpg" alt=""
+                                        class="img-carousel" style="width: 150px; height: 150;">
+                                    <h6>Oppo Watch 41mm hồng</h6>
+                                    <small>
+                                        <div class="row">
+                                            <div class="col-md-5"><strong style="color: red; ">5.990.000₫</strong>
+                                            </div>
+                                            <div class="col-md-5"><del>6.000.000</del></div>
+                                        </div>
+                                    </small>
+
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="container-fluid  d-none d-md-block" style="background-color: white; margin-top: 10px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row" style="padding: 10px;">
+                            <h4>CÁCH THỨC THANH TOÁN</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 icon-pay icon-bg" style="background-position: -740px -768px;"></div>
+                            <div class="col-md-2 icon-pay icon-bg" style="background-position: -309px -768px;"></div>
+                            <div class="col-md-2 icon-pay icon-bg" style="background-position: -262px -828px;"></div>
+                            <div class="col-md-2 icon-pay icon-bg" style="background-position: -189px -829px;"></div>
+                            <div class="col-md-2 icon-pay icon-bg" style="background-position: -554px -830px;"></div>
+                            <div class="col-md-2 icon-pay icon-bg" style="background-position: -896px -527px;"></div>
+                        </div>
+
+                        <div class="row" style="padding: 10px;">
+                            <h4>LIÊN HỆ</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <a href="https://www.facebook.com/lehongquocvuong" class="btn" title="Facebook">
+                                    <img src="assets/img/icon/face.png" alt="" style="height: 40px;">
+                                </a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="" class="btn" title="Youtube">
+                                    <img src="assets/img/icon/youtube.png" alt="" style="height: 40px;">
+                                </a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="" class="btn" title="Zalo">
+                                    <img src="assets/img/icon/zalo.png" alt="" style="height: 40px;">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row" style="padding: 10px;">
+                                    <h4>DỊCH VỤ GIAO HÀNG</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="m-2"
+                                        style="background-image: url(assets/img/icon/ListLogo2.png);background-position: -142px -951px; width: 198px; height: 55px; background-size: 1000px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 m-2"
+                                        style="background-image: url(assets/img/icon/ListLogo2.png);background-position: -499px -533px; width: 92px; height: 38px; background-size: 600px;">
+                                    </div>
+                                    <div class="col-md-4 m-2"
+                                        style="background-image: url(assets/img/icon/ListLogo2.png);background-position: -0px -220px; width: 89px; height: 40px; background-size: 509px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-4 mt-2"
+                                        style="background-image: url(assets/img/icon/ListLogo2.png);background-position: -172.5px -266px; width: 81px; height: 38px; background-size: 500px;">
+                                    </div>
+
+                                    <div class="col-md-8 mt-2"><img src="assets/img/icon/LogoBest.png" alt=""
+                                            style="height: 30px" class="img-fluid"></div>
+                                </div>
+                                <div class="row m-2">
+                                    <img src="assets/img/icon/LogoAha.png" alt="" style="height: 30px">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row" style="padding: 10px;">
+                                    <h4>CHỨNG NHẬN</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 my-2">
+                                        <img src="assets/img/icon/ChungNhan.png" alt="" style="height: 60px;">
+                                    </div>
+                                    <div class="col-md-6 my-4">
+                                        <img src="assets/img/icon/ChungNhan4.png" alt="" style="height: 40px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 my-2">
+                                        <img src="assets/img/icon/ChungNhan2.png" alt="" style="height: 80px;">
+                                    </div>
+                                    <div class="col-md-6 my-4">
+                                        <img src="assets/img/icon/ChungNhan5.png" alt="" style="height: 40px;">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 my-2">
+                                        <img src="assets/img/icon/ChungNhan3.png" alt="" style="height: 42px;">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Back to top -->
+        <button id="myBtn" title="Go to top"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
+
+
+    </div>
+    <!-- Hết div Vuejs -->
+
+    <!-- Liên kết Jquery -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <!-- Liên kết PopperJS -->
+    <script src="assets/vendor/popperjs/popper.min.js"></script>
+    <!-- Liên kết Bootstrap -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.js"></script>
+    <!-- OwlCarousel -->
+    <script src="assets/vendor/OwlCarousel/js/owl.carousel.min.js"></script>
+    <!-- Vuejs -->
+    <script src="assets/vendor/vuejs/vue.js"></script>
+    <!-- Custom script - Các file js do mình tự viết -->
+    <script src="assets/js/app.js"></script>
+
+</body>
+
+</html>
