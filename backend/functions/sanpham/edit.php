@@ -1,6 +1,13 @@
 <!-- Nhúng file cấu hình để xác định được Tên và Tiêu đề của trang hiện tại người dùng đang truy cập -->
 <?php include_once(__DIR__ . '/../../layouts/config.php'); ?>
-
+<?php
+// hàm `session_id()` sẽ trả về giá trị SESSION_ID (tên file session do Web Server tự động tạo)
+// - Nếu trả về Rỗng hoặc NULL => chưa có file Session tồn tại
+if (session_id() === '') {
+  // Yêu cầu Web Server tạo file Session để lưu trữ giá trị tương ứng với CLIENT (Web Browser đang gởi Request)
+  session_start();
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -143,7 +150,10 @@
             <label for="lsp_ma">Loại sản phẩm</label>
             <select name="lsp_ma" id="lsp_ma" class="form-control">
               <?php foreach($dataLoaiSanPham as $lsp):?>
-                <option value="<?= $lsp['lsp_ma']?>"><?= $lsp['lsp_ten']?></option>
+                <option value="<?= $lsp['lsp_ma']?>" <?php if($rowSanPham['lsp_ma']==$lsp['lsp_ma']) echo"selected"?>
+                >
+                  <?= $lsp['lsp_ten']?>
+                </option>
               <?php endforeach;?>
             </select>
         </div>
@@ -151,7 +161,10 @@
             <label for="nsx_ma">Nhà sản xuất</label>
             <select class="form-control" id="nsx_ma" name="nsx_ma">
                 <?php foreach ($dataNhaSanXuat as $nhasanxuat) : ?>
-                    <option value="<?= $nhasanxuat['nsx_ma'] ?>"><?= $nhasanxuat['nsx_ten'] ?></option>
+                    <option value="<?= $nhasanxuat['nsx_ma'] ?>"<?php if($rowSanPham['nsx_ma']==$nhasanxuat['nsx_ma']) echo"selected"?>
+                    >
+                      <?= $nhasanxuat['nsx_ten'] ?>
+                    </option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -161,7 +174,10 @@
             <select class="form-control" id="km_ma" name="km_ma">
                 <option value="">Chọn loại khuyến mãi...</option>
                 <?php foreach ($dataKhuyenMai as $khuyenmai) : ?>
-                    <option value="<?= $khuyenmai['km_ma'] ?>"><?= $khuyenmai['km_tomtat'] ?></option>
+                    <option value="<?= $khuyenmai['km_ma'] ?>"<?php if($rowSanPham['km_ma']==$khuyenmai['km_ma']) echo"selected"?>
+                    >
+                      <?= $khuyenmai['km_tomtat'] ?>
+                    </option>
                 <?php endforeach; ?>
             </select>
         </div>

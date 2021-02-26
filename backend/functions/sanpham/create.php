@@ -1,6 +1,13 @@
 <!-- Nhúng file cấu hình để xác định được Tên và Tiêu đề của trang hiện tại người dùng đang truy cập -->
 <?php include_once(__DIR__ . '/../../layouts/config.php'); ?>
-
+<?php
+// hàm `session_id()` sẽ trả về giá trị SESSION_ID (tên file session do Web Server tự động tạo)
+// - Nếu trả về Rỗng hoặc NULL => chưa có file Session tồn tại
+if (session_id() === '') {
+  // Yêu cầu Web Server tạo file Session để lưu trữ giá trị tương ứng với CLIENT (Web Browser đang gởi Request)
+  session_start();
+}
+?>
 <!DOCTYPE html>
 <html>
 

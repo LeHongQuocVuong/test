@@ -1,5 +1,13 @@
 <!-- Nhúng file cấu hình để xác định được Tên và Tiêu đề của trang hiện tại người dùng đang truy cập -->
 <?php include_once(__DIR__ . '/../../layouts/config.php'); ?>
+<?php
+// hàm `session_id()` sẽ trả về giá trị SESSION_ID (tên file session do Web Server tự động tạo)
+// - Nếu trả về Rỗng hoặc NULL => chưa có file Session tồn tại
+if (session_id() === '') {
+  // Yêu cầu Web Server tạo file Session để lưu trữ giá trị tương ứng với CLIENT (Web Browser đang gởi Request)
+  session_start();
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -22,7 +30,7 @@
 
       <main role="main" class="col-md-10 ml-sm-auto px-4 mb-2">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Danh sách hình thức thanh toán</h1>
+          <h1 class="h2">Danh sách Hình thức thanh toán</h1>
         </div>
 
         <!-- Block content -->
@@ -40,12 +48,11 @@
         // 4. Khi thực thi các truy vấn dạng SELECT, dữ liệu lấy về cần phải phân tích để sử dụng
         // Thông thường, chúng ta sẽ sử dụng vòng lặp while để duyệt danh sách các dòng dữ liệu được SELECT
         // Ta sẽ tạo 1 mảng array để chứa các dữ liệu được trả về
-        $ds_loaisanpham = [];
+        $ds_hinhthucthanhtoan = [];
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-          $ds_loaisanpham[] = array(
-            'lsp_ma' => $row['lsp_ma'],
-            'lsp_ten' => $row['lsp_ten'],
-            'lsp_mota' => $row['lsp_mota']
+          $ds_hinhthucthanhtoan[] = array(
+            'httt_ma' => $row['httt_ma'],
+            'httt_ten' => $row['httt_ten']
           );
         }
         ?>
@@ -56,29 +63,27 @@
           <thead class="thead-dark">
           <tr>
               <th>STT</th>
-              <th>Mã loại sản phẩm</th>
-              <th>Tên loại sản phẩm</th>
-              <th>Mô tả loại sản phẩm</th>
+              <th>Mã hình thức thanh toán</th>
+              <th>Tên hình thức thanh toán</th>
               <th>Hành động</th>
           </tr>
           </thead>
           <tbody>
             <?php
-              foreach ($ds_loaisanpham as $lsp):?>
+              foreach ($ds_hinhthucthanhtoan as $httt):?>
                 <tr>
                   <td><?= $stt; $stt++?></td>
-                  <td><?= $lsp['lsp_ma']?></td>
-                  <td><?= $lsp['lsp_ten']?></td>
-                  <td><?= $lsp['lsp_mota']?></td>
+                  <td><?= $httt['httt_ma']?></td>
+                  <td><?= $httt['httt_ten']?></td>
                   <td>
-                    <!-- Nút sửa, bấm vào sẽ hiển thị form hiệu chỉnh thông tin dựa vào khóa chính `lsp_ma` -->
-                    <a href="edit.php?lsp_ma=<?= $lsp['lsp_ma'] ?>" class="btn btn-warning">
+                    <!-- Nút sửa, bấm vào sẽ hiển thị form hiệu chỉnh thông tin dựa vào khóa chính `httt_ma` -->
+                    <a href="edit.php?httt_ma=<?= $httt['httt_ma'] ?>" class="btn btn-warning">
                       <span data-feather="edit"></span> Sửa
                     </a>
-                    <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `lsp_ma` -->
-                    <a href="delete.php?lsp_ma=<?= $lsp['lsp_ma'] ?>" class="btn btn-danger">
-                      <span data-feather="delete"></span> Xóa
-                    </a>
+                    <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `httt_ma` -->
+                    
+                    <button class="btn btn-danger btnDelete" data-httt_ma="<?= $httt['httt_ma'] ?>">Xóa</button>
+                    
                   </td>
                   
                 </tr>
@@ -98,8 +103,43 @@
   <!-- Nhúng file quản lý phần SCRIPT JAVASCRIPT -->
   <?php include_once(__DIR__ . '/../../layouts/scripts.php'); ?>
 
-  <!-- Các file Javascript sử dụng riêng cho trang này, liên kết tại đây -->
-  <!-- <script src="..."></script> -->
+  <!-- SweetAlert -->
+  <script src="/test/assets/vendor/sweetalert/sweetalert.min.js"></script>
+  <script>
+    $(document).ready( function () {
+      // Cảnh báo khi xóa
+        // 1. Đăng ký sự kiện click cho các phần tử (element) đang áp dụng class .btnDelete
+        
+        $('.btnDelete').click(function() {
+            // Click hanlder
+            // Hiện cảnh báo khi bấm nút xóa
+            swal({
+                title: "Bạn có chắc chắn muốn xóa?",
+                text: "Một khi đã xóa, không thể phục hồi....",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                
+                if (willDelete) { // Nếu đồng ý xóa
+                    
+                    // 2. Lấy giá trị của thuộc tính (custom attribute HTML) 'httt_ma'
+                    
+                    var httt_ma = $(this).data('httt_ma');
+                    var url = "delete.php?httt_ma=" + httt_ma;
+                    
+                    // Điều hướng qua trang xóa với REQUEST GET, có tham số httt_ma=...
+                    location.href = url;
+
+                } else {
+                    swal("Cẩn thận hơn nhé!");
+                }
+            });
+          });
+      
+    } );
+  </script>
 </body>
 
 </html>

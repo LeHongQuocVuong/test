@@ -1,5 +1,13 @@
 <!-- Nhúng file cấu hình để xác định được Tên và Tiêu đề của trang hiện tại người dùng đang truy cập -->
 <?php include_once(__DIR__ . '/../../layouts/config.php'); ?>
+<?php
+// hàm `session_id()` sẽ trả về giá trị SESSION_ID (tên file session do Web Server tự động tạo)
+// - Nếu trả về Rỗng hoặc NULL => chưa có file Session tồn tại
+if (session_id() === '') {
+  // Yêu cầu Web Server tạo file Session để lưu trữ giá trị tương ứng với CLIENT (Web Browser đang gởi Request)
+  session_start();
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -8,8 +16,8 @@
   <!-- Nhúng file quản lý phần HEAD -->
   <?php include_once(__DIR__ . '/../../layouts/head.php'); ?>
   <!-- DataTable CSS -->
-  <link href="/back_end/assets/vendor/DataTables/datatables.css" type="text/css" rel="stylesheet" />
-  <link href="/back_end/assets/vendor/DataTables/Buttons-1.6.5/css/buttons.bootstrap4.min.css" type="text/css" rel="stylesheet" />
+  <link href="/test/assets/vendor/DataTables/datatables.css" type="text/css" rel="stylesheet" />
+  <link href="/test/assets/vendor/DataTables/Buttons-1.6.5/css/buttons.bootstrap4.min.css" type="text/css" rel="stylesheet" />
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -72,30 +80,30 @@ EOT;
           // var_dump(!is_null($rowChitiet['manhinh'])); die;
           
           $mota = "<ul>";
-          if(!is_null($rowChitiet['manhinh'])) {
+          if(isset($rowChitiet['manhinh'])) {
             $mota = $mota . "<li>Màn hình: " . $rowChitiet['manhinh'] . "</li>";
           }
           // var_dump($rowChitiet['manhinh']); die;
           // var_dump($mota); die;
-          if(!is_null($rowChitiet['os'])) {
+          if(isset($rowChitiet['os'])) {
             $mota = $mota . "<li>Hệ điều hành: " . $rowChitiet['os'] . "</li>";
           }
-          if(!is_null($rowChitiet['camera_sau'])) {
+          if(isset($rowChitiet['camera_sau'])) {
             $mota = $mota . "<li>Camera sau: " . $rowChitiet['camera_sau'] . "</li>";
           }
-          if(!is_null($rowChitiet['camera_truoc'])) {
+          if(isset($rowChitiet['camera_truoc'])) {
             $mota = $mota . "<li>Camera trước: " . $rowChitiet['camera_truoc'] . "</li>";
           }
-          if(!is_null($rowChitiet['cpu'])) {
+          if(isset($rowChitiet['cpu'])) {
             $mota = $mota . "<li>CPU: " . $rowChitiet['cpu'] . "</li>";
           }
-          if(!is_null($rowChitiet['ram'])) {
+          if(isset($rowChitiet['ram'])) {
             $mota = $mota . "<li>RAM: " . $rowChitiet['ram'] . "</li>";
           }
-          if(!is_null($rowChitiet['ocung'])) {
+          if(isset($rowChitiet['ocung'])) {
             $mota = $mota . "<li>Bộ nhớ: " . $rowChitiet['ocung'] . "</li>";
           }
-          if(!is_null($rowChitiet['pin'])) {
+          if(isset($rowChitiet['pin'])) {
             $mota = $mota . "<li>Pin: " . $rowChitiet['pin'] . "</li>";
           }
 
@@ -194,12 +202,12 @@ EOT;
   <!-- Nhúng file quản lý phần SCRIPT JAVASCRIPT -->
   <?php include_once(__DIR__ . '/../../layouts/scripts.php'); ?>
   <!-- DataTable JS -->
-  <script src="/back_end/assets/vendor/DataTables/datatables.min.js"></script>
-  <script src="/back_end/assets/vendor/DataTables/Buttons-1.6.5/js/buttons.bootstrap4.min.js  "></script>
-  <script src="/back_end/assets/vendor/DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
-  <script src="/back_end/assets/vendor/DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
+  <script src="/test/assets/vendor/DataTables/datatables.min.js"></script>
+  <script src="/test/assets/vendor/DataTables/Buttons-1.6.5/js/buttons.bootstrap4.min.js  "></script>
+  <script src="/test/assets/vendor/DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
+  <script src="/test/assets/vendor/DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
   <!-- SweetAlert -->
-  <script src="/back_end/assets/vendor/sweetalert/sweetalert.min.js"></script>
+  <script src="/test/assets/vendor/sweetalert/sweetalert.min.js"></script>
   <!-- Các file Javascript sử dụng riêng cho trang này, liên kết tại đây -->
   <!-- <script src="..."></script> -->
 
@@ -277,7 +285,7 @@ EOT;
           console.log('draw.dt');
           eventFiredBtnDeleteSweetAlert(this);
       }).DataTable({    
-        responsive: true,   
+        responsive: false,   
         dom: 'Blfrtip',
         buttons: [
             'copy', 'excel', 'pdf'

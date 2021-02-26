@@ -1,3 +1,6 @@
+<!-- Nhúng file cấu hình để xác định được Tên và Tiêu đề của trang hiện tại người dùng đang truy cập -->
+<?php include_once(__DIR__ . '/../../layouts/config.php'); ?>
+
 <?php
 // hàm `session_id()` sẽ trả về giá trị SESSION_ID (tên file session do Web Server tự động tạo)
 // - Nếu trả về Rỗng hoặc NULL => chưa có file Session tồn tại
@@ -11,16 +14,15 @@ if (session_id() === '') {
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NenTang.vn</title>
+    <!-- Nhúng file quản lý phần HEAD -->
+  <?php include_once(__DIR__ . '/../../layouts/head.php'); ?>
 
     <!-- Nhúng file Quản lý các Liên kết CSS dùng chung cho toàn bộ trang web -->
     <?php include_once(__DIR__ . '/../../layouts/styles.php'); ?>
 
     <!-- DataTable CSS -->
-    <link href="/back_end/assets/vendor/DataTables/datatables.css" type="text/css" rel="stylesheet" />
-    <link href="/back_end/assets/vendor/DataTables/Buttons-1.6.5/css/buttons.bootstrap4.min.css" type="text/css" rel="stylesheet" />
+    <link href="/test/assets/vendor/DataTables/datatables.css" type="text/css" rel="stylesheet" />
+    <link href="/test/assets/vendor/DataTables/Buttons-1.6.5/css/buttons.bootstrap4.min.css" type="text/css" rel="stylesheet" />
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -91,7 +93,7 @@ EOT;
                 <a href="create.php" class="btn btn-primary">
                     Thêm mới
                 </a>
-                <table id="tblDanhSach" class="table table-bordered table-hover table-sm table-responsive mt-2">
+                <table id="tableSP" class="table table-bordered table-hover table-sm table-responsive mt-2">
                     <thead class="thead-dark">
                         <tr>
                             <th>Mã Đơn đặt hàng</th>
@@ -161,52 +163,58 @@ EOT;
 
     <!-- Các file Javascript sử dụng riêng cho trang này, liên kết tại đây -->
     <!-- DataTable JS -->
-    <script src="/back_end/assets/vendor/DataTables/datatables.min.js"></script>
-    <script src="/back_end/assets/vendor/DataTables/Buttons-1.6.5/js/buttons.bootstrap4.min.js  "></script>
-    <script src="/back_end/assets/vendor/DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
-    <script src="/back_end/assets/vendor/DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
+  <script src="/test/assets/vendor/DataTables/datatables.min.js"></script>
+  <script src="/test/assets/vendor/DataTables/Buttons-1.6.5/js/buttons.bootstrap4.min.js  "></script>
+  <script src="/test/assets/vendor/DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
+  <script src="/test/assets/vendor/DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
+  <!-- SweetAlert -->
+  <script src="/test/assets/vendor/sweetalert/sweetalert.min.js"></script>
+  <!-- Các file Javascript sử dụng riêng cho trang này, liên kết tại đây -->
+  <!-- <script src="..."></script> -->
 
-    <!-- SweetAlert -->
-    <script src="/back_end/assets/vendor/sweetalert/sweetalert.min.js"></script>  
-    <script>
-        $(document).ready(function() {
-            // Yêu cầu DataTable quản lý datatable #tblDanhSach
-            $('#tblDanhSach').DataTable({
-                dom: 'Blfrtip',
-                buttons: [
-                    'copy', 'excel', 'pdf'
-                ]
-            });
+  <script>
+    $(document).ready( function () {
+      
+      var eventFiredBtnDeleteSweetAlert = function(jE) {     
+        $(jE).on('click', '.btnDelete', function(e) {
+            e.preventDefault();
+            var btnDelete = $(this);
+            swal({
+              title: "Bạn có chắc chắn muốn xóa?",
+              text: "Một khi đã xóa, không thể phục hồi....",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+                    
+                    if (willDelete) { // Nếu đồng ý xóa
+                        
+                        // 2. Lấy giá trị của thuộc tính (custom attribute HTML) 'sp_ma'
+                        // var sp_ma = $(this).attr('data-sp_ma');
+                        var sp_ma = $(this).data('sp_ma');
+                        var url = "delete.php?sp_ma=" + sp_ma;
+                        
+                        // Điều hướng qua trang xóa với REQUEST GET, có tham số sp_ma=...
+                        location.href = url;
 
-            // Cảnh báo khi xóa
-            // 1. Đăng ký sự kiện click cho các phần tử (element) đang áp dụng class .btnDelete
-            $('.btnDelete').click(function() {
-                // Click hanlder
-                // 2. Sử dụng thư viện SweetAlert để hiện cảnh báo khi bấm nút xóa
-                swal({
-                        title: "Bạn có chắc chắn muốn xóa?",
-                        text: "Một khi đã xóa, không thể phục hồi....",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                    })
-                    .then((willDelete) => {
-                        if (willDelete) { // Nếu đồng ý xóa
-
-                            // 3. Lấy giá trị của thuộc tính (custom attribute HTML) 'dh_ma'
-                            // var dh_ma = $(this).attr('data-dh_ma');
-                            var dh_ma = $(this).data('dh_ma');
-                            var url = "delete.php?dh_ma=" + dh_ma;
-
-                            // Điều hướng qua trang xóa với REQUEST GET, có tham số dh_ma=...
-                            location.href = url;
-                        } else { // Nếu không đồng ý xóa
-                            swal("Cẩn thận hơn nhé!");
-                        }
-                    });
-
-            });
+                    } else {
+                        swal("Cẩn thận hơn nhé!");
+                    }
+                });
         });
+      };
+
+    $('#tableSP').on('draw.dt', function () {
+          console.log('draw.dt');
+          eventFiredBtnDeleteSweetAlert(this);
+      }).DataTable({    
+        responsive: false,   
+        dom: 'Blfrtip',
+        buttons: [
+            'copy', 'excel', 'pdf'
+        ]
+      });
+  } );
     </script>
 
 </body>

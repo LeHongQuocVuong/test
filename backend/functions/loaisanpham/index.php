@@ -97,7 +97,7 @@
   <?php include_once(__DIR__ . '/../../layouts/scripts.php'); ?>
 
   <!-- SweetAlert -->
-  <script src="/back_end/assets/vendor/sweetalert/sweetalert.min.js"></script>
+  <script src="/test/assets/vendor/sweetalert/sweetalert.min.js"></script>
   <!-- Các file Javascript sử dụng riêng cho trang này, liên kết tại đây -->
   <!-- <script src="..."></script> -->
 

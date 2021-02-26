@@ -242,7 +242,7 @@ if (session_id() === '') {
 
                 <?php
                 // Nếu người dùng có bấm nút Đăng ký thì thực thi câu lệnh
-                if (isset($_POST['btnSave'])) {
+                if (isset($_POST['btnSave']) && isset($_POST['sp_ma']) && isset($_POST['sp_dh_soluong']) && isset($_POST['sp_dh_dongia'])) {
                     // 1. Phân tách lấy dữ liệu người dùng gởi từ REQUEST POST
                     // Thông tin đơn hàng
                     $kh_tendangnhap = $_POST['kh_tendangnhap'];

@@ -22,7 +22,7 @@
 
       <main role="main" class="col-md-10 ml-sm-auto px-4 mb-2">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Hiệu chỉnh</h1>
+          <h1 class="h2">Sửa Hình sản phẩm</h1>
         </div>
 
         <!-- Block content -->
@@ -87,7 +87,7 @@
           <div class="form-group">
             <label for="">Hình ảnh hiện tại</label>
             <br />
-            <img src="/../../../back_end/assets/uploads/products/<?= $hinhsanphamRow['hsp_tentaptin'] ?>" class="img-fluid" width="300px" />
+            <img src="/../../../test/assets/uploads/products/<?= $hinhsanphamRow['hsp_tentaptin'] ?>" class="img-fluid" width="300px" />
           </div>
           <div class="form-group">
             <label for="sp_ma">Sản phẩm</label>
@@ -106,7 +106,7 @@
 
             <!-- Tạo khung div hiển thị ảnh cho người dùng Xem trước khi upload file lên Server -->
             <div class="preview-img-container">
-              <img src="/../../../back_end/assets/uploads/products/default-image_600.png" id="preview-img" width="200px" />
+              <img src="/../../../test/assets/uploads/products/default-image_600.png" id="preview-img" width="200px" />
             </div>
 
             <!-- Input cho phép người dùng chọn FILE -->

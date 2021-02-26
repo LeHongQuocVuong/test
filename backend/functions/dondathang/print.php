@@ -1,3 +1,5 @@
+<!-- Nhúng file cấu hình để xác định được Tên và Tiêu đề của trang hiện tại người dùng đang truy cập -->
+<?php include_once(__DIR__ . '/../../layouts/config.php'); ?>
 <?php
 // hàm `session_id()` sẽ trả về giá trị SESSION_ID (tên file session do Web Server tự động tạo)
 // - Nếu trả về Rỗng hoặc NULL => chưa có file Session tồn tại
@@ -11,16 +13,15 @@ if (session_id() === '') {
 <html lang="en">
 
 <head>
+    <!-- Nhúng file quản lý phần HEAD -->
+    <?php include_once(__DIR__ . '/../../layouts/head.php'); ?>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Paper CSS -->
-    <link rel="stylesheet" href="/back_end/assets/vendor/paper-css/paper.css" type="text/css" />
+    <link rel="stylesheet" href="/test/assets/vendor/paper-css/paper.css" type="text/css" />
 
-    <!-- Block title - Đục lỗ trên giao diện bố cục chung, đặt tên là `title` -->
-    <title>Nền tảng - Kiến thức cơ bản về WEB</title>
-    <!-- End block title -->
 
     <!-- Định khổ giấy: A5, A4 or A3 -->
     <style>
@@ -123,7 +124,7 @@ EOT;
         <table border="0" width="100%" cellspacing="0">
             <tbody>
                 <tr>
-                    <td align="center"><img src="/back_end/assets/uploads/products/default-image_600.png" width="100px" height="100px" /></td>
+                    <td align="center"><img src="/test/assets/uploads/products/default-image_600.png" width="100px" height="100px" /></td>
                     <td align="center">
                         <b style="font-size: 2em;">Nền tảng - Hành trang tới Tương lai</b><br />
                         <small>Cung cấp kiến thức nền tảng về Lập trình, Thiết kế Web, Cơ sở dữ liệu</small><br />

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
-  <a class="navbar-brand" href="/">Nền tảng</a>
+  <a class="navbar-brand" href="/">King</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,7 +7,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/back_end/backend/pages/dashboard.php">Bảng tin</a>
+        <a class="nav-link" href="/test/backend/pages/dashboard.php">Bảng tin</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/test/frontend/index.php">Trang chủ</a>
       </li>
     </ul>
 
@@ -21,11 +24,11 @@
           <a class="nav-link">Chào <?= $_SESSION['kh_tendangnhap_logged']; ?></a>
         </li>
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="/back_end/backend/auth/logout.php">Đăng xuất</a>
+          <a class="nav-link" href="/test/backend/auth/logout.php">Đăng xuất</a>
         </li>
       <?php else : ?>
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="/back_end/backend/auth/login.php">Đăng nhập</a>
+          <a class="nav-link" href="/test/backend/auth/login.php">Đăng nhập</a>
         </li>
       <?php endif; ?>
     </ul>

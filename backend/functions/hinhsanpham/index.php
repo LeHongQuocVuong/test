@@ -1,12 +1,23 @@
 <!-- Nhúng file cấu hình để xác định được Tên và Tiêu đề của trang hiện tại người dùng đang truy cập -->
 <?php include_once(__DIR__ . '/../../layouts/config.php'); ?>
-
+<?php
+// hàm `session_id()` sẽ trả về giá trị SESSION_ID (tên file session do Web Server tự động tạo)
+// - Nếu trả về Rỗng hoặc NULL => chưa có file Session tồn tại
+if (session_id() === '') {
+  // Yêu cầu Web Server tạo file Session để lưu trữ giá trị tương ứng với CLIENT (Web Browser đang gởi Request)
+  session_start();
+}
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
   <!-- Nhúng file quản lý phần HEAD -->
   <?php include_once(__DIR__ . '/../../layouts/head.php'); ?>
+  <!-- DataTable CSS -->
+  <link href="/test/assets/vendor/DataTables/datatables.css" type="text/css" rel="stylesheet" />
+  <link href="/test/assets/vendor/DataTables/Buttons-1.6.5/css/buttons.bootstrap4.min.css" type="text/css" rel="stylesheet" />
+
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -22,7 +33,7 @@
 
       <main role="main" class="col-md-10 ml-sm-auto px-4 mb-2">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Danh sách</h1>
+          <h1 class="h2">Danh sách Hình sản phẩm</h1>
         </div>
 
         <!-- Block content -->
@@ -73,7 +84,7 @@ EOT;
         <a href="create.php" class="btn btn-primary">
           Thêm mới
         </a>
-        <table class="table table-bordered table-hover mt-2">
+        <table id="tableSP" class="table table-bordered table-hover mt-2">
           <thead class="thead-dark">
             <tr>
               <th>Mã Hình Sản phẩm</th>
@@ -87,7 +98,7 @@ EOT;
             <tr>
               <td><?= $hinhsanpham['hsp_ma'] ?></td>
               <td>
-                <img src="/../../../back_end/assets/uploads/products/<?= $hinhsanpham['hsp_tentaptin'] ?>" class="img-fluid" width="100px" />
+                <img src="/../../../test/assets/uploads/products/<?= $hinhsanpham['hsp_tentaptin'] ?>" class="img-fluid" width="100px" />
               </td>
               <td><?= $hinhsanpham['sp_tomtat'] ?></td>
               <td>
@@ -96,10 +107,10 @@ EOT;
                   Sửa
                 </a>
 
-                <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `sp_ma` -->
-                <a href="delete.php?hsp_ma=<?= $hinhsanpham['hsp_ma'] ?>" class="btn btn-danger">
-                  Xóa
-                </a>
+                <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `hsp_ma` -->
+                
+                <button class="btn btn-danger btnDelete" data-hsp_ma="<?= $hinhsanpham['hsp_ma'] ?>">Xóa</button>
+                    
               </td>
             </tr>
             <?php endforeach; ?>
@@ -117,8 +128,60 @@ EOT;
   <!-- Nhúng file quản lý phần SCRIPT JAVASCRIPT -->
   <?php include_once(__DIR__ . '/../../layouts/scripts.php'); ?>
 
+  <!-- DataTable JS -->
+  <script src="/test/assets/vendor/DataTables/datatables.min.js"></script>
+  <script src="/test/assets/vendor/DataTables/Buttons-1.6.5/js/buttons.bootstrap4.min.js  "></script>
+  <script src="/test/assets/vendor/DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
+  <script src="/test/assets/vendor/DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
+  <!-- SweetAlert -->
+  <script src="/test/assets/vendor/sweetalert/sweetalert.min.js"></script>
   <!-- Các file Javascript sử dụng riêng cho trang này, liên kết tại đây -->
   <!-- <script src="..."></script> -->
+
+  <script>
+    $(document).ready( function () {
+      
+      var eventFiredBtnDeleteSweetAlert = function(jE) {     
+        $(jE).on('click', '.btnDelete', function(e) {
+            e.preventDefault();
+            var btnDelete = $(this);
+            swal({
+              title: "Bạn có chắc chắn muốn xóa?",
+              text: "Một khi đã xóa, không thể phục hồi....",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+                    
+                    if (willDelete) { // Nếu đồng ý xóa
+                        
+                        // 2. Lấy giá trị của thuộc tính (custom attribute HTML) 'hsp_ma'
+                        // var hsp_ma = $(this).attr('data-hsp_ma');
+                        var hsp_ma = $(this).data('hsp_ma');
+                        var url = "delete.php?hsp_ma=" + hsp_ma;
+                        
+                        // Điều hướng qua trang xóa với REQUEST GET, có tham số hsp_ma=...
+                        location.href = url;
+
+                    } else {
+                        swal("Cẩn thận hơn nhé!");
+                    }
+                });
+        });
+      };
+
+    $('#tableSP').on('draw.dt', function () {
+          console.log('draw.dt');
+          eventFiredBtnDeleteSweetAlert(this);
+      }).DataTable({    
+        responsive: false,   
+        dom: 'Blfrtip',
+        buttons: [
+            'copy', 'excel', 'pdf'
+        ]
+      });
+  } );
+    </script>
 </body>
 
 </html>

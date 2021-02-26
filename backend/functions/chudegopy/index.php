@@ -1,5 +1,13 @@
 <!-- Nhúng file cấu hình để xác định được Tên và Tiêu đề của trang hiện tại người dùng đang truy cập -->
 <?php include_once(__DIR__ . '/../../layouts/config.php'); ?>
+<?php
+// hàm `session_id()` sẽ trả về giá trị SESSION_ID (tên file session do Web Server tự động tạo)
+// - Nếu trả về Rỗng hoặc NULL => chưa có file Session tồn tại
+if (session_id() === '') {
+  // Yêu cầu Web Server tạo file Session để lưu trữ giá trị tương ứng với CLIENT (Web Browser đang gởi Request)
+  session_start();
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -50,7 +58,7 @@
 
         <!-- Nút thêm mới, bấm vào sẽ hiển thị form nhập thông tin Thêm mới -->
         <a href="create.php" class="btn btn-primary">Thêm mới</a>
-        <table class="table table-bordered table-hover mt-2">
+        <table id="tableSP" class="table table-bordered table-hover mt-2">
           <thead class="thead-dark">
           <tr>
               <th>Mã chủ đề góp ý</th>
@@ -70,9 +78,8 @@
                       <span data-feather="edit"></span> Sửa
                     </a>
                     <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `cdgy_ma` -->
-                    <a href="delete.php?cdgy_ma=<?= $cdgy['cdgy_ma'] ?>" class="btn btn-danger">
-                      <span data-feather="delete"></span> Xóa
-                    </a>
+                    
+                    <button class="btn btn-danger btnDelete" data-cdgy_ma="<?= $cdgy['cdgy_ma'] ?>">Xóa</button>
                   </td>
                   
                 </tr>
@@ -92,8 +99,43 @@
   <!-- Nhúng file quản lý phần SCRIPT JAVASCRIPT -->
   <?php include_once(__DIR__ . '/../../layouts/scripts.php'); ?>
 
-  <!-- Các file Javascript sử dụng riêng cho trang này, liên kết tại đây -->
-  <!-- <script src="..."></script> -->
+  <!-- SweetAlert -->
+  <script src="/test/assets/vendor/sweetalert/sweetalert.min.js"></script>
+  <script>
+    $(document).ready( function () {
+      // Cảnh báo khi xóa
+        // 1. Đăng ký sự kiện click cho các phần tử (element) đang áp dụng class .btnDelete
+        
+        $('.btnDelete').click(function() {
+            // Click hanlder
+            // Hiện cảnh báo khi bấm nút xóa
+            swal({
+                title: "Bạn có chắc chắn muốn xóa?",
+                text: "Một khi đã xóa, không thể phục hồi....",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                
+                if (willDelete) { // Nếu đồng ý xóa
+                    
+                    // 2. Lấy giá trị của thuộc tính (custom attribute HTML) 'cdgy_ma'
+                    
+                    var cdgy_ma = $(this).data('cdgy_ma');
+                    var url = "delete.php?cdgy_ma=" + cdgy_ma;
+                    
+                    // Điều hướng qua trang xóa với REQUEST GET, có tham số cdgy_ma=...
+                    location.href = url;
+
+                } else {
+                    swal("Cẩn thận hơn nhé!");
+                }
+            });
+          });
+      
+    } );
+  </script>
 </body>
 
 </html>

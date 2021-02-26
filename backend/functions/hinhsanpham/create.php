@@ -84,7 +84,7 @@
 
             <!-- Tạo khung div hiển thị ảnh cho người dùng Xem trước khi upload file lên Server -->
             <div class="preview-img-container">
-              <img src="/../../../back_end/assets/uploads/products/default-image_600.png" id="preview-img" width="200px" />
+              <img src="/../../../test/assets/uploads/products/default-image_600.png" id="preview-img" width="200px" />
             </div>
 
             <!-- Input cho phép người dùng chọn FILE -->
