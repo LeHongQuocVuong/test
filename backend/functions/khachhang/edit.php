@@ -37,47 +37,49 @@ if (session_id() === '') {
         // Truy vấn database
         // 1. Include file cấu hình kết nối đến database, khởi tạo kết nối $conn
         include_once(__DIR__ . '/../../../dbconnect.php');
+        $kh_tendangnhap = $_GET['kh_tendangnhap'];
+        $select = "SELECT *	FROM khachhang WHERE kh_tendangnhap = '$kh_tendangnhap';";
+        $resultSelect = mysqli_query($conn,$select);
+        $selectRow = mysqli_fetch_array($resultSelect, MYSQLI_ASSOC);
+
         ?>
 
         <!-- Block content -->
         <form action="" method="post" name="frmCreate" id="frmCreate">
-        <div class="form-group">
-            <label for="kh_tendangnhap">Tên đăng nhập</label>
-            <input type="text" class="form-control" id="kh_tendangnhap" name="kh_tendangnhap" placeholder="Tên đăng nhập" value="">
-        </div>
+        
         <div class="form-group">
             <label for="kh_matkhau">Mật khẩu</label>
-            <input type="text" class="form-control" id="kh_matkhau" name="kh_matkhau" placeholder="Mật khẩu" value="">
+            <input type="text" class="form-control" id="kh_matkhau" name="kh_matkhau" placeholder="Mật khẩu" value="<?= $selectRow['kh_matkhau'] ?>">
         </div>
         <div class="form-group">
             <label for="kh_ten">Tên khách hàng</label>
-            <input type="text" class="form-control" id="kh_ten" name="kh_ten" placeholder="Tên khách hàng" value="">
+            <input type="text" class="form-control" id="kh_ten" name="kh_ten" placeholder="Tên khách hàng" value="<?= $selectRow['kh_ten'] ?>">
         </div>
         
         <div class="form-group">
           <label>Giới tính</label><br />
           <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio" name="kh_gioitinh" id="kh_gioitinh-1" class="custom-control-input" value="1" checked>
+              <input type="radio" name="kh_gioitinh" id="kh_gioitinh-1" class="custom-control-input" value="1" <?php if($selectRow['kh_gioitinh']==1) echo "checked"; ?>>
               <label class="custom-control-label" for="kh_gioitinh-1">Nam</label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio" name="kh_gioitinh" id="kh_gioitinh-2" class="custom-control-input" value="0">
+              <input type="radio" name="kh_gioitinh" id="kh_gioitinh-2" class="custom-control-input" value="0" <?php if($selectRow['kh_gioitinh']==0) echo "checked"; ?>>
               <label class="custom-control-label" for="kh_gioitinh-2">Nữ</label>
           </div>
       </div>
 
         <div class="form-group">
             <label for="kh_diachi">Địa chỉ</label>
-            <input type="text" class="form-control" id="kh_diachi" name="kh_diachi" placeholder="Địa chỉ" value="">
+            <input type="text" class="form-control" id="kh_diachi" name="kh_diachi" placeholder="Địa chỉ" value="<?= $selectRow['kh_diachi'] ?>">
         </div>
         <div class="form-group">
             <label for="kh_dienthoai">Điện thoại</label>
-            <input type="text" class="form-control" id="kh_dienthoai" name="kh_dienthoai" placeholder="Điện thoại" value="">
+            <input type="text" class="form-control" id="kh_dienthoai" name="kh_dienthoai" placeholder="Điện thoại" value="<?= $selectRow['kh_dienthoai'] ?>">
         </div>
         
         <div class="form-group">
             <label for="kh_email">Email</label>
-            <input type="text" class="form-control" id="kh_email" name="kh_email" placeholder="Email"?>
+            <input type="text" class="form-control" id="kh_email" name="kh_email" placeholder="Email"value="<?= $selectRow['kh_email'] ?>">
         </div>
 
         <div class="form-group">
@@ -85,7 +87,7 @@ if (session_id() === '') {
             <select name="kh_ngaysinh" id="kh_ngaysinh" class="form-control">
             <option value="">Vui lòng chọn Ngày sinh</option>
                 <?php for ($i=1; $i<=31; $i++) : ?>
-                    <option value="<?= $i ?>"><?= $i ?></option>
+                    <option value="<?= $i ?>"<?php if($selectRow['kh_ngaysinh']==$i) echo "selected"; ?>><?= $i ?></option>
                 <?php endfor; ?>
             </select>
         </div>
@@ -94,7 +96,7 @@ if (session_id() === '') {
             <select name="kh_thangsinh" id="kh_thangsinh" class="form-control">
             <option value="">Vui lòng chọn Tháng sinh</option>
                 <?php for ($i=1; $i<=12; $i++) : ?>
-                    <option value="<?= $i ?>"><?= "Tháng " . $i ?></option>
+                    <option value="<?= $i ?>"<?php if($selectRow['kh_thangsinh']==$i) echo "selected"; ?>><?= "Tháng " . $i ?></option>
                 <?php endfor; ?>
             </select>
         </div>
@@ -103,24 +105,24 @@ if (session_id() === '') {
             <select name="kh_namsinh" id="kh_namsinh" class="form-control">
             <option value="">Vui lòng chọn Năm sinh</option>
                 <?php for ($i=2021; $i>=1900; $i--) : ?>
-                    <option value="<?= $i ?>"><?= $i ?></option>
+                    <option value="<?= $i ?>"<?php if($selectRow['kh_namsinh']==$i) echo "selected"; ?>><?= $i ?></option>
                 <?php endfor; ?>
             </select>
         </div>
 
         <div class="form-group">
             <label for="kh_cmnd">Chứng minh nhân dân</label>
-            <input type="text" class="form-control" id="kh_cmnd" name="kh_cmnd" placeholder="Chứng minh nhân dân">
+            <input type="text" class="form-control" id="kh_cmnd" name="kh_cmnd" placeholder="Chứng minh nhân dân"value="<?= $selectRow['kh_cmnd'] ?>">
         </div>
 
         <div class="form-group">
           <label>Quản trị</label><br />
           <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio" name="kh_quantri" id="kh_quantri-1" class="custom-control-input" value="0" checked>
+              <input type="radio" name="kh_quantri" id="kh_quantri-1" class="custom-control-input" value="0" <?php if($selectRow['kh_quantri']==0) echo "checked"; ?>>
               <label class="custom-control-label" for="kh_quantri-1">Khách hàng</label>
           </div>
           <div class="custom-control custom-radio custom-control-inline">
-              <input type="radio" name="kh_quantri" id="kh_quantri-2" class="custom-control-input" value="1">
+              <input type="radio" name="kh_quantri" id="kh_quantri-2" class="custom-control-input" value="1" <?php if($selectRow['kh_quantri']==1) echo "checked"; ?>>
               <label class="custom-control-label" for="kh_quantri-2">Quản trị</label>
           </div>
         </div>
@@ -132,7 +134,7 @@ if (session_id() === '') {
         // 2. Nếu người dùng có bấm nút "Lưu dữ liệu"
           if(isset($_POST['btnSave'])){
             // Lấy dữ liệu người dùng hiệu chỉnh gởi từ REQUEST POST
-            $kh_tendangnhap = htmlentities($_POST['kh_tendangnhap']);
+            // $kh_tendangnhap = htmlentities($_POST['kh_tendangnhap']);
             $kh_matkhau = htmlentities($_POST['kh_matkhau']);
             $kh_ten = htmlentities($_POST['kh_ten']);
             $kh_gioitinh = htmlentities($_POST['kh_gioitinh']);
@@ -150,35 +152,7 @@ if (session_id() === '') {
             // Tạo biến lỗi để chứa thông báo lỗi
             $errors = [];
 
-            // Validate Tên đăng nhập_____________
-            // required
-            if(empty($kh_tendangnhap)){
-              $errors['kh_tendangnhap'][] = [
-                'rule' => 'required',
-                'rule_value' => true,
-                'value' => $kh_tendangnhap,
-                'msg' => 'Vui lòng nhập tên đăng nhập'
-              ];
-            }
-            // minlength 5
-            if (!empty($kh_tendangnhap) && strlen($kh_tendangnhap) < 5) {
-              $errors['kh_tendangnhap'][] = [
-                'rule' => 'minlength',
-                'rule_value' => 5,
-                'value' => $kh_tendangnhap,
-                'msg' => 'Tên đăng nhập phải có ít nhất 5 ký tự'
-              ];
-            }
-            // maxlength 50
-            if (!empty($kh_tendangnhap) && strlen($kh_tendangnhap) > 50) {
-              $errors['kh_tendangnhap'][] = [
-                'rule' => 'maxlength',
-                'rule_value' => 50,
-                'value' => $kh_tendangnhap,
-                'msg' => 'Tên đăng nhập không được vượt quá 50 ký tự'
-              ];
-            }
-
+            
             // Validate mật khẩu________________________
             // required
             if (empty($kh_matkhau)) {
@@ -376,9 +350,20 @@ if (session_id() === '') {
             
             // Câu lệnh INSERT
             $sql = <<<EOT
-            INSERT INTO khachhang
-            (kh_tendangnhap, kh_matkhau, kh_ten, kh_gioitinh, kh_diachi, kh_dienthoai, kh_email, kh_ngaysinh, kh_thangsinh, kh_namsinh, kh_cmnd, kh_quantri)
-            VALUES ('$kh_tendangnhap', '$kh_matkhau', '$kh_ten', $kh_gioitinh, '$kh_diachi', '$kh_dienthoai', '$kh_email', $kh_ngaysinh, $kh_thangsinh, $kh_namsinh, '$kh_cmnd', $kh_quantri);
+            UPDATE khachhang
+            SET
+              kh_matkhau='$kh_matkhau',
+              kh_ten='$kh_ten',
+              kh_gioitinh=$kh_gioitinh,
+              kh_diachi='$kh_diachi',
+              kh_dienthoai='$kh_dienthoai',
+              kh_email='$kh_email',
+              kh_ngaysinh=$kh_ngaysinh,
+              kh_thangsinh=$kh_thangsinh,
+              kh_namsinh=$kh_namsinh,
+              kh_cmnd='$kh_cmnd',
+              kh_quantri=$kh_quantri
+            WHERE kh_tendangnhap = '$kh_tendangnhap';
 EOT;
             // Thực thi INSERT
             mysqli_query($conn, $sql);
@@ -410,11 +395,7 @@ EOT;
   $(document).ready(function() {
     $("#frmCreate").validate({
       rules: {
-        kh_tendangnhap: {
-          required: true,
-          minlength: 5,
-          maxlength: 50
-        },
+        
         kh_matkhau: {
           required: true,
           minlength: 5,
@@ -454,11 +435,7 @@ EOT;
         // }
       },
       messages: {
-        kh_tendangnhap: {
-          required: "Vui lòng nhập tên đăng nhập",
-          min: "Tên đăng nhập phải có ít nhất 5 ký tự",
-          maxlength: "Tên đăng nhập không được vượt quá 50 ký tự"
-        },
+        
         kh_matkhau: {
           required: "Vui lòng nhập mật khẩu",
           min: "Mật khẩu phải có ít nhất 5 ký tự",

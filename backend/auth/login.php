@@ -1,9 +1,11 @@
+<!-- Nhúng file cấu hình để xác định được Tên và Tiêu đề của trang hiện tại người dùng đang truy cập -->
+<?php include_once(__DIR__ . '/../layouts/config.php'); ?>
 <?php
 // hàm `session_id()` sẽ trả về giá trị SESSION_ID (tên file session do Web Server tự động tạo)
 // - Nếu trả về Rỗng hoặc NULL => chưa có file Session tồn tại
 if (session_id() === '') {
-    // Yêu cầu Web Server tạo file Session để lưu trữ giá trị tương ứng với CLIENT (Web Browser đang gởi Request)
-    session_start();
+  // Yêu cầu Web Server tạo file Session để lưu trữ giá trị tương ứng với CLIENT (Web Browser đang gởi Request)
+  session_start();
 }
 ?>
 
@@ -11,9 +13,8 @@ if (session_id() === '') {
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập Backend | NenTang.vn</title>
+    <!-- Nhúng file quản lý phần HEAD -->
+  <?php include_once(__DIR__ . '/../layouts/head.php'); ?>
 
     <!-- Nhúng file Quản lý các Liên kết CSS dùng chung cho toàn bộ trang web -->
     <?php include_once(__DIR__ . '/../layouts/styles.php'); ?>
@@ -37,7 +38,7 @@ if (session_id() === '') {
                 // Đã đăng nhập rồi -> điều hướng về trang chủ
                 if (isset($_SESSION['kh_tendangnhap_logged']) && !empty($_SESSION['kh_tendangnhap_logged'])) :
                 ?>
-                    <h2>Bạn đã đăng nhập rồi. <a href="/back_end/backend/">Bấm vào đây để quay về trang chủ.</a></h2>
+                    <h2>Bạn đã đăng nhập rồi. <a href="/test/backend/">Bấm vào đây để quay về trang chủ.</a></h2>
                 <?php else : ?>
 
                     <form name="frmLogin" id="frmLogin" method="post" action="">
@@ -131,7 +132,7 @@ EOT;
 
                             echo 'Đăng nhập thành công!';
                             // Điều hướng (redirect) về trang chủ
-                            echo '<script>location.href = "/back_end/backend/pages/dashboard.php";</script>';
+                            echo '<script>location.href = "/test/backend/pages/dashboard.php";</script>';
                         } else {
                             echo '<h2 style="color: red;">Đăng nhập thất bại!</h2>';
                         }

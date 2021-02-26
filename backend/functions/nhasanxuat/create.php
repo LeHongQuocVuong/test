@@ -1,6 +1,13 @@
 <!-- Nhúng file cấu hình để xác định được Tên và Tiêu đề của trang hiện tại người dùng đang truy cập -->
 <?php include_once(__DIR__ . '/../../layouts/config.php'); ?>
-
+<?php
+// hàm `session_id()` sẽ trả về giá trị SESSION_ID (tên file session do Web Server tự động tạo)
+// - Nếu trả về Rỗng hoặc NULL => chưa có file Session tồn tại
+if (session_id() === '') {
+  // Yêu cầu Web Server tạo file Session để lưu trữ giá trị tương ứng với CLIENT (Web Browser đang gởi Request)
+  session_start();
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -28,9 +35,9 @@
         <!-- Block content -->
         <form action="" method="post" name="frmCreate" id="frmCreate">
           <div class="form-group">
-            <label for="nsx_ten">Tên nhà xuất</label>
+            <label for="nsx_ten">Tên nhà sản xuất</label>
             <input type="text" class="form-control" id="nsx_ten" name="nsx_ten" aria-describedby="nsx_tenHelp">
-            <small id="nsx_tenHelp" class="form-text text-muted">Nhập ít nhất 5 ký tự</small>
+            <small id="nsx_tenHelp" class="form-text text-muted">Nhập tên nhà sản xuất</small>
           </div>
           
           <button class="btn btn-primary" name="btnSave">Lưu dữ liệu</button>
@@ -44,13 +51,13 @@
           // 2. Nếu người dùng có bấm nút "Lưu dữ liệu"
           if(isset($_POST['btnSave'])){
             // Lấy dữ liệu người dùng hiệu chỉnh gởi từ REQUEST POST
-            $nsx_ten = $_POST['nsx_ten'];
+            $nsx_ten = htmlentities($_POST['nsx_ten']);
 
             // Kiểm tra ràng buộc dữ liệu (Validation)
             // Tạo biến lỗi để chứa thông báo lỗi
             $errors = [];
 
-            // Validate Tên Nhà sản xuất
+            // Validate tên nhà sản xuất
             // required
             if(empty($nsx_ten)){
               $errors['nsx_ten'][] = [
@@ -60,24 +67,18 @@
                 'msg' => 'Vui lòng nhập tên Nhà sản xuất'
               ];
             }
-            // minlength 3
-            if (!empty($nsx_ten) && strlen($nsx_ten) < 1) {
-              $errors['nsx_ten'][] = [
-                'rule' => 'minlength',
-                'rule_value' => 1,
-                'value' => $nsx_ten,
-                'msg' => 'Tên Nhà sản xuất phải có ít nhất 1 ký tự'
-              ];
-            }
-            // maxlength 50
-            if (!empty($nsx_ten) && strlen($nsx_ten) > 50) {
+            
+            // maxlength 500
+            if (!empty($nsx_ten) && strlen($nsx_ten) > 500) {
               $errors['nsx_ten'][] = [
                 'rule' => 'maxlength',
-                'rule_value' => 50,
+                'rule_value' => 500,
                 'value' => $nsx_ten,
-                'msg' => 'Tên Nhà sản xuất không được vượt quá 50 ký tự'
+                'msg' => 'Tên Nhà sản xuất không được vượt quá 500 ký tự'
               ];
-            }            
+            }
+
+            
           }
             ?>
 
@@ -115,7 +116,7 @@
               // VALIDATE dữ liệu đã hợp lệ
               // Thực thi câu lệnh SQL QUERY
               // Câu lệnh INSERT
-              $sql = "INSERT INTO nhasanxuat (nsx_ten)	VALUES ('$nsx_ten');";
+              $sql = "INSERT INTO `nhasanxuat` (nsx_ten) VALUES ('$nsx_ten');";
 
               // Thực thi INSERT
               mysqli_query($conn, $sql) or die("<b>Có lỗi khi thực thi câu lệnh SQL: </b>" . mysqli_error($conn) . "<br /><b>Câu lệnh vừa thực thi:</b></br>$sql");
@@ -152,16 +153,26 @@
       rules: {
         nsx_ten: {
           required: true,
-          minlength: 1,
-          maxlength: 50
+          minlength: 5,
+          maxlength: 500
+        },
+        lsp_mota: {
+          required: true,
+          minlength: 5,
+          maxlength: 1000
         }
       },
       messages: {
         nsx_ten: {
           required: "Vui lòng nhập tên Nhà sản xuất",
-          minlength: "Tên Nhà sản xuất phải có ít nhất 1 ký tự",
-          maxlength: "Tên Nhà sản xuất không được vượt quá 50 ký tự"
-        }
+          minlength: "Tên Nhà sản xuất phải có tên nhà sản xuất",
+          maxlength: "Tên Nhà sản xuất không được vượt quá 500 ký tự"
+        },
+        lsp_mota: {
+          required: "Vui lòng nhập mô tả cho Nhà sản xuất",
+          minlength: "Mô tả cho Nhà sản xuất phải có tên nhà sản xuất",
+          maxlength: "Mô tả cho Nhà sản xuất không được vượt quá 1000 ký tự"
+        },
       },
       errorElement: "em",
       errorPlacement: function(error, element) {
